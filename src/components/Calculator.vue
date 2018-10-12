@@ -4,7 +4,7 @@
     <form @submit.prevent="calculateCalories">
       <div>
         <label for="size">Valitse koko:</label>
-        <select v-model="size" name="size">
+        <select v-model="size" name="size" @change="calculateCalories">
           <option value=1>15 cm</option>
           <option value=2>30 cm</option>
         </select>
