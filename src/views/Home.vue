@@ -1,18 +1,30 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Calculator 
+    v-bind:breads="breads"
+    v-bind:sauces="sauces" 
+    v-bind:meats="meats"
+    v-bind:cheeses="cheeses"  
+    />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import Calculator from "@/components/Calculator.vue";
+import { breads, cheeses, meats, sauces } from "@/data/data.js";
 export default {
   name: "home",
   components: {
-    HelloWorld
+    Calculator
+  },
+  data() {
+    return {
+      breads: breads,
+      cheeses: cheeses,
+      meats: meats,
+      sauces: sauces
+    };
   }
 };
 </script>
