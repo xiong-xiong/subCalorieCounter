@@ -2,28 +2,63 @@
   <div class="calcContainer">
     Kalorit: {{calories}}
     <form @submit.prevent="calculateCalories">
-      <label>Valitse täyte:</label>
-      <select v-model="selectedMeat">
-        <option disabled value="">Valitse täyte</option>
-        <option v-for="(meat, key) in meats" :key="key" v-bind:value="meat.calories">{{ meat.finnish }}</option> 
-      </select>
-
-      <label>Valitse leipä:</label>
-      <select v-model="selectedBread">
-        <option disabled value="">Valitse leipä</option>
-       <option v-for="(bread, key) in breads" :key="key" v-bind:value="bread.calories">{{ bread.finnish }}</option> 
-      </select>
-      <label>Valitse kastike:</label>
-      <select v-model="selectedSauce">
-        <option disabled value="">Valitse kastike</option>
-       <option v-for="(sauce, key) in sauces" :key="key" v-bind:value="sauce.calories">{{ sauce.finnish }}</option> 
-      </select>
-      <label>Valitse juusto:</label>
-      <select v-model="selectedCheese">
+      <div>
+        <label for="size">Valitse koko:</label>
+        <select v-model="size" name="size">
+          <option value=1>15 cm</option>
+          <option value=2>30 cm</option>
+        </select>
+      </div>
+       <div>
+        <label for="bread">Valitse leipä:</label>
+        <select v-model="selectedBread" name="bread"  @change="calculateCalories">
+          <option disabled value="">Valitse leipä</option>
+        <option v-for="(bread, key) in breads" :key="key" v-bind:value="bread">{{ bread.finnish }}</option> 
+        </select>
+      </div>
+      <div>
+        <label for="meat">Valitse täyte:</label>
+        <select v-model="selectedMeat" name="meat" @change="calculateCalories">
+          <option disabled value="">Valitse täyte</option>
+          <option v-for="(meat, key) in meats" :key="key" v-bind:value="meat">{{ meat.finnish }}</option> 
+        </select>
+      </div>
+      <div>
+        <label for="sauce">Valitse kastike:</label>
+        <select v-model="selectedSauce" name="sauce" @change="calculateCalories">
+          <option disabled value="">Valitse kastike</option>
+        <option v-for="(sauce, key) in sauces" :key="key" v-bind:value="sauce">{{ sauce.finnish }}</option> 
+        </select>
+      </div>
+      <div>
+        <label for="sauce2">Valitse toinen kastike:</label>
+        <select v-model="selectedSauceII" name="sauce2" @change="calculateCalories">
+          <option disabled value="">Valitse kastike</option>
+        <option v-for="(sauce, key) in sauces" :key="key" v-bind:value="sauce">{{ sauce.finnish }}</option> 
+        </select>
+      </div>
+       <div>
+        <label for="sauce3">Valitse kolmas kastike:</label>
+        <select v-model="selectedSauceIII" name="sauce3" @change="calculateCalories">
+          <option disabled value="">Valitse kastike</option>
+          <option v-for="(sauce, key) in sauces" :key="key" v-bind:value="sauce">{{ sauce.finnish }}</option> 
+        </select>
+      </div>
+      <div>
+      <label for="cheese">Valitse juusto:</label>
+      <select v-model="selectedCheese" name="cheese" @change="calculateCalories">
         <option disabled value="">Valitse juusto</option>
-       <option v-for="(cheese, key) in cheeses" :key="key" v-bind:value="cheese.calories">{{ cheese.finnish }}</option> 
+       <option v-for="(cheese, key) in cheeses" :key="key" v-bind:value="cheese">{{ cheese.finnish }}</option> 
       </select>
-      <input type="submit" value="Save"/>
+      </div>
+      <div>
+      <label for="cheese">Valitse lisäjuusto:</label>
+      <select v-model="selectedCheeseII" name="cheeseII" @change="calculateCalories">
+        <option disabled value="">Valitse juusto</option>
+       <option v-for="(cheese, key) in cheeses" :key="key" v-bind:value="cheese">{{ cheese.finnish }}</option> 
+      </select>
+      </div>
+
     </form>
   </div>
 </template>
@@ -33,10 +68,14 @@ export default {
   name: "Calculator",
   data() {
     return {
-      selectedBread: 0,
-      selectedSauce: 0,
-      selectedMeat: 0,
-      selectedCheese: 0,
+      selectedBread: { calories: 0 },
+      selectedSauce: { calories: 0 },
+      selectedSauceII: { calories: 0 },
+      selectedSauceIII: { calories: 0 },
+      selectedMeat: { calories: 0 },
+      selectedCheese: { calories: 0 },
+      selectedCheeseII: { calories: 0 },
+      size: 1,
       calories: 0
     };
   },
@@ -49,10 +88,14 @@ export default {
   methods: {
     calculateCalories() {
       this.calories =
-        this.selectedBread +
-        this.selectedSauce +
-        this.selectedMeat +
-        this.selectedCheese;
+        (this.selectedBread.calories +
+          this.selectedSauce.calories +
+          this.selectedSauceII.calories +
+          this.selectedSauceIII.calories +
+          this.selectedMeat.calories +
+          this.selectedCheese.calories +
+          this.selectedCheeseII.calories) *
+        this.size;
     }
   }
 };
@@ -60,4 +103,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+select {
+  height: 40px;
+  width: 300px;
+  cursor: pointer;
+  font-size: 18px;
+}
+label {
+  margin: 10px 0px 5px 0px;
+  display: block;
+}
 </style>

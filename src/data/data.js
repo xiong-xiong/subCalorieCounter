@@ -27,6 +27,11 @@ export const breads = {
 };
 
 export const sauces = {
+  noSauce: {
+    calories: 0,
+    english: "No Sauce",
+    finnish: "Ei kastiketta"
+  },
   southwest: {
     calories: 100,
     english: "Chipotle Southwest",
@@ -70,6 +75,11 @@ export const sauces = {
 };
 
 export const cheeses = {
+  noCheese: {
+    calories: 0,
+    english: "No Cheese",
+    finnish: "Ei juustoa"
+  },
   american: {
     calories: 40,
     english: "American cheese",
@@ -88,6 +98,11 @@ export const cheeses = {
 };
 
 export const meats = {
+  noMeat: {
+    calories: 0,
+    english: "No Filling",
+    finnish: "Ei täytettä"
+  },
   chickenPatty: {
     calories: 104,
     english: "Chicken patty",
