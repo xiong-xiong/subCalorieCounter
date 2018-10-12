@@ -1,6 +1,6 @@
 <template>
   <div class="calcContainer">
-    Kalorit: {{calories}}
+   <div class="calories"> Kalorit: {{calories}}</div>
     <form @submit.prevent="calculateCalories">
       <div>
         <label for="size">Valitse koko:</label>
@@ -112,5 +112,28 @@ select {
 label {
   margin: 10px 0px 5px 0px;
   display: block;
+  font-size: 20px;
+}
+.calcContainer {
+  background: white;
+  width: 400px;
+  margin: 0 auto;
+  padding: 30px 25px;
+  opacity: 0.95;
+  border: 8px solid rgba(63, 158, 0, 1);
+}
+.calories {
+  background: rgba(63, 158, 0, 1);
+  color: white;
+  height: 50px;
+  line-height: 50px;
+  padding: 0px 25px;
+  display: inline-block;
+  margin: 15px auto;
+  border: 3px solid white;
+  box-shadow: -1px -1px 0px 7px rgba(63, 158, 0, 1);
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 </style>

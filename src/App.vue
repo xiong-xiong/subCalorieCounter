@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <h1>Subway Calorie Calculator</h1>
-    <div id="nav">
+    <h1>Subway Kalorilaskuri</h1>
+  <!--  <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
+    </div> -->
     <router-view/>
   </div>
 </template>
@@ -13,6 +13,7 @@
 h1 {
   color: yellow;
   -webkit-text-stroke: 1px black;
+  text-transform: uppercase;
 }
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
