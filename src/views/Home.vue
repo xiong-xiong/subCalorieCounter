@@ -1,5 +1,6 @@
 <template>  
   <div class="home">
+    <h1>Subway Kalorilaskuri</h1>
     <div class="bg" />
     <div class="calculator">
       <Calculator 
@@ -32,6 +33,11 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+h1 {
+  color: yellow;
+  -webkit-text-stroke: 1px black;
+  text-transform: uppercase;
+}
 .home {
   position: relative;
 }

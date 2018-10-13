@@ -106,6 +106,8 @@ export default {
 select {
   height: 40px;
   width: 300px;
+  max-width: 80vw;
+  border: 1px solid rgba(63, 158, 0, 1);
   cursor: pointer;
   font-size: 18px;
 }
@@ -116,11 +118,14 @@ label {
 }
 .calcContainer {
   background: white;
-  width: 400px;
   margin: 0 auto;
   padding: 30px 25px;
   opacity: 0.95;
   border: 8px solid rgba(63, 158, 0, 1);
+  max-width: 100vw;
+  @media screen and (min-width: 900px) {
+    width: 400px;
+  }
 }
 .calories {
   background: rgba(63, 158, 0, 1);
